@@ -1,0 +1,941 @@
+{
+ "language": "kn",
+ "today": "2026-11-20",
+ "about": "GetLekka Kannada test set. 'say' is the sentence to read out loud when recording. 'expect' is the right answer. Recordings go in eval/audio/ named after the id (c01.ogg) or id + speaker (c01__anita.m4a). 'today' is a Friday, so 'friday' means 27 Nov. A customer given as a list accepts any of those spellings.",
+ "cases": [
+  {
+   "id": "c01",
+   "tags": [
+    "credit"
+   ],
+   "say": "ಸುರೇಶ್ ಗೆ 650 ರೂಪಾಯಿ ಸಾಲ ಕೊಟ್ಟೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಸುರೇಶ್",
+      "amount": 650
+     }
+    ]
+   }
+  },
+  {
+   "id": "c02",
+   "tags": [
+    "credit"
+   ],
+   "say": "ರಮೇಶ್ ಗೆ ನೂರು ರೂಪಾಯಿ ಸಾಲ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ರಮೇಶ್",
+      "amount": 100
+     }
+    ]
+   }
+  },
+  {
+   "id": "c03",
+   "tags": [
+    "credit"
+   ],
+   "say": "ಗೀತಾ ಅವರಿಗೆ 450 ರೂಪಾಯಿ ಉದ್ರಿ ಕೊಟ್ಟಿದ್ದೇನೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಗೀತಾ",
+      "amount": 450
+     }
+    ]
+   }
+  },
+  {
+   "id": "c04",
+   "tags": [
+    "credit"
+   ],
+   "say": "ಮಂಜುನಾಥ್ ಗೆ 1200 ರೂಪಾಯಿ ಬಾಕಿ ಬರೆದುಕೋ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಮಂಜುನಾಥ್",
+      "amount": 1200
+     }
+    ]
+   }
+  },
+  {
+   "id": "c05",
+   "tags": [
+    "credit"
+   ],
+   "say": "ಲಕ್ಷ್ಮಿ ಅಕ್ಕಿ ತಗೊಂಡ್ರು 380 ರೂಪಾಯಿ ಸಾಲ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಲಕ್ಷ್ಮಿ",
+      "amount": 380
+     }
+    ]
+   }
+  },
+  {
+   "id": "c06",
+   "tags": [
+    "credit"
+   ],
+   "say": "ಶಂಕರ್ ಗೆ 75 ರೂಪಾಯಿ ಸಾಲ ಕೊಟ್ಟಿದ್ದೇನೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಶಂಕರ್",
+      "amount": 75
+     }
+    ]
+   }
+  },
+  {
+   "id": "c07",
+   "tags": [
+    "credit"
+   ],
+   "say": "ಪ್ರಕಾಶ್ ಗೆ 2000 ರೂಪಾಯಿ ಸಾಲ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಪ್ರಕಾಶ್",
+      "amount": 2000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c08",
+   "tags": [
+    "credit"
+   ],
+   "say": "ರಾಜು 540 ರೂಪಾಯಿ ಸಾಲ ತಗೊಂಡ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ರಾಜು",
+      "amount": 540
+     }
+    ]
+   }
+  },
+  {
+   "id": "p01",
+   "tags": [
+    "payment"
+   ],
+   "say": "ರಮೇಶ್ 200 ರೂಪಾಯಿ ಕೊಟ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": "ರಮೇಶ್",
+      "amount": 200
+     }
+    ]
+   }
+  },
+  {
+   "id": "p02",
+   "tags": [
+    "payment"
+   ],
+   "say": "ಸುರೇಶ್ ನಿಂದ 500 ರೂಪಾಯಿ ಬಂತು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": "ಸುರೇಶ್",
+      "amount": 500
+     }
+    ]
+   }
+  },
+  {
+   "id": "p03",
+   "tags": [
+    "payment"
+   ],
+   "say": "ಗೀತಾ 150 ರೂಪಾಯಿ ವಾಪಸ್ ಕೊಟ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": "ಗೀತಾ",
+      "amount": 150
+     }
+    ]
+   }
+  },
+  {
+   "id": "p04",
+   "tags": [
+    "payment"
+   ],
+   "say": "ಕುಮಾರ್ 1000 ರೂಪಾಯಿ ಕಟ್ಟಿದ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": "ಕುಮಾರ್",
+      "amount": 1000
+     }
+    ]
+   }
+  },
+  {
+   "id": "p05",
+   "tags": [
+    "payment"
+   ],
+   "say": "ಮಹೇಶ್ ಫೋನ್ ಪೇ ಮಾಡಿದ್ರು 300 ರೂಪಾಯಿ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": "ಮಹೇಶ್",
+      "amount": 300
+     }
+    ]
+   }
+  },
+  {
+   "id": "p06",
+   "tags": [
+    "payment"
+   ],
+   "say": "ನಾಗರಾಜ್ 250 ರೂಪಾಯಿ ಕೊಟ್ಟು ಹೋದ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": "ನಾಗರಾಜ್",
+      "amount": 250
+     }
+    ]
+   }
+  },
+  {
+   "id": "m01",
+   "tags": [
+    "multi"
+   ],
+   "say": "ಸುರೇಶ್ ಗೆ 650 ಸಾಲ, ಕುಮಾರ್ 300 ವಾಪಸ್ ಕೊಟ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಸುರೇಶ್",
+      "amount": 650
+     },
+     {
+      "kind": "payment",
+      "customer": "ಕುಮಾರ್",
+      "amount": 300
+     }
+    ]
+   }
+  },
+  {
+   "id": "m02",
+   "tags": [
+    "multi"
+   ],
+   "say": "ರಮೇಶ್ ಗೆ 200 ಸಾಲ, ಗೀತಾ ಗೆ 350 ಸಾಲ, ಶಂಕರ್ ಗೆ 100 ಸಾಲ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ರಮೇಶ್",
+      "amount": 200
+     },
+     {
+      "kind": "credit",
+      "customer": "ಗೀತಾ",
+      "amount": 350
+     },
+     {
+      "kind": "credit",
+      "customer": "ಶಂಕರ್",
+      "amount": 100
+     }
+    ]
+   }
+  },
+  {
+   "id": "m03",
+   "tags": [
+    "multi"
+   ],
+   "say": "ಸುರೇಶ್ 500 ಕೊಟ್ರು, ಮಹೇಶ್ 250 ಕೊಟ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": "ಸುರೇಶ್",
+      "amount": 500
+     },
+     {
+      "kind": "payment",
+      "customer": "ಮಹೇಶ್",
+      "amount": 250
+     }
+    ]
+   }
+  },
+  {
+   "id": "m04",
+   "tags": [
+    "multi",
+    "sale"
+   ],
+   "say": "ಮಂಜುನಾಥ್ ಗೆ 800 ಸಾಲ, ಲಕ್ಷ್ಮಿ 400 ಕೊಟ್ರು, ಇವತ್ತು ಕ್ಯಾಶ್ ಸೇಲ್ 2500",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಮಂಜುನಾಥ್",
+      "amount": 800
+     },
+     {
+      "kind": "payment",
+      "customer": "ಲಕ್ಷ್ಮಿ",
+      "amount": 400
+     },
+     {
+      "kind": "sale",
+      "customer": null,
+      "amount": 2500
+     }
+    ]
+   }
+  },
+  {
+   "id": "m05",
+   "tags": [
+    "multi"
+   ],
+   "say": "ಪ್ರಕಾಶ್ ಗೆ 300 ಸಾಲ, ರಾಜು ಗೆ 450 ಸಾಲ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಪ್ರಕಾಶ್",
+      "amount": 300
+     },
+     {
+      "kind": "credit",
+      "customer": "ರಾಜು",
+      "amount": 450
+     }
+    ]
+   }
+  },
+  {
+   "id": "m06",
+   "tags": [
+    "multi"
+   ],
+   "say": "ನಾಗರಾಜ್ 600 ಕೊಟ್ರು, ವೆಂಕಟೇಶ್ ಗೆ 900 ಸಾಲ, ಅನಿತಾ 150 ಕೊಟ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": "ನಾಗರಾಜ್",
+      "amount": 600
+     },
+     {
+      "kind": "credit",
+      "customer": "ವೆಂಕಟೇಶ್",
+      "amount": 900
+     },
+     {
+      "kind": "payment",
+      "customer": "ಅನಿತಾ",
+      "amount": 150
+     }
+    ]
+   }
+  },
+  {
+   "id": "m07",
+   "tags": [
+    "multi",
+    "numbers"
+   ],
+   "say": "ಕುಮಾರ್ ಗೆ ಎರಡು ಸಾವಿರ ಸಾಲ, ರಮೇಶ್ 500 ಕೊಟ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಕುಮಾರ್",
+      "amount": 2000
+     },
+     {
+      "kind": "payment",
+      "customer": "ರಮೇಶ್",
+      "amount": 500
+     }
+    ]
+   }
+  },
+  {
+   "id": "m08",
+   "tags": [
+    "multi",
+    "sale"
+   ],
+   "say": "ಸವಿತಾ ಗೆ 120 ಸಾಲ, ಬಸವರಾಜ್ ಗೆ 340 ಸಾಲ, ಕಾವ್ಯ 200 ಕೊಟ್ರು, ಕ್ಯಾಶ್ 900",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಸವಿತಾ",
+      "amount": 120
+     },
+     {
+      "kind": "credit",
+      "customer": "ಬಸವರಾಜ್",
+      "amount": 340
+     },
+     {
+      "kind": "payment",
+      "customer": "ಕಾವ್ಯ",
+      "amount": 200
+     },
+     {
+      "kind": "sale",
+      "customer": null,
+      "amount": 900
+     }
+    ]
+   }
+  },
+  {
+   "id": "d01",
+   "tags": [
+    "due"
+   ],
+   "say": "ಸುರೇಶ್ ಗೆ 650 ಸಾಲ, ಶುಕ್ರವಾರ ಕೊಡ್ತಾರೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಸುರೇಶ್",
+      "amount": 650,
+      "due": "friday"
+     }
+    ]
+   }
+  },
+  {
+   "id": "d02",
+   "tags": [
+    "due"
+   ],
+   "say": "ರಮೇಶ್ ಗೆ 400 ಸಾಲ, ನಾಳೆ ಕೊಡ್ತಾನೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ರಮೇಶ್",
+      "amount": 400,
+      "due": "tomorrow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "d03",
+   "tags": [
+    "due"
+   ],
+   "say": "ಗೀತಾ ಗೆ 250 ಸಾಲ, ಸೋಮವಾರ ಕೊಡ್ತಾರೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಗೀತಾ",
+      "amount": 250,
+      "due": "monday"
+     }
+    ]
+   }
+  },
+  {
+   "id": "d04",
+   "tags": [
+    "due"
+   ],
+   "say": "ಕುಮಾರ್ ಗೆ 900 ಸಾಲ, ಒಂದು ವಾರ ಆದ ಮೇಲೆ ಕೊಡ್ತಾರೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಕುಮಾರ್",
+      "amount": 900,
+      "due": "in 7 days"
+     }
+    ]
+   }
+  },
+  {
+   "id": "d05",
+   "tags": [
+    "due"
+   ],
+   "say": "ಮಹೇಶ್ ಗೆ 300 ಸಾಲ, ಇವತ್ತೇ ಸಂಜೆ ಕೊಡ್ತಾರೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಮಹೇಶ್",
+      "amount": 300,
+      "due": "today"
+     }
+    ]
+   }
+  },
+  {
+   "id": "d06",
+   "tags": [
+    "due"
+   ],
+   "say": "ಶಂಕರ್ ಗೆ 500 ಸಾಲ, ಐದು ದಿನದಲ್ಲಿ ಕೊಡ್ತಾರೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಶಂಕರ್",
+      "amount": 500,
+      "due": "in 5 days"
+     }
+    ]
+   }
+  },
+  {
+   "id": "n01",
+   "tags": [
+    "numbers"
+   ],
+   "say": "ರಾಜು ಗೆ ಇನ್ನೂರ ಐವತ್ತು ರೂಪಾಯಿ ಸಾಲ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ರಾಜು",
+      "amount": 250
+     }
+    ]
+   }
+  },
+  {
+   "id": "n02",
+   "tags": [
+    "numbers"
+   ],
+   "say": "ಲಕ್ಷ್ಮಿ ಆರುನೂರ ಐವತ್ತು ರೂಪಾಯಿ ಕೊಟ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": "ಲಕ್ಷ್ಮಿ",
+      "amount": 650
+     }
+    ]
+   }
+  },
+  {
+   "id": "n03",
+   "tags": [
+    "numbers"
+   ],
+   "say": "ಮಂಜುನಾಥ್ ಗೆ ಒಂದು ಸಾವಿರ ಐನೂರು ಸಾಲ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಮಂಜುನಾಥ್",
+      "amount": 1500
+     }
+    ]
+   }
+  },
+  {
+   "id": "n04",
+   "tags": [
+    "numbers"
+   ],
+   "say": "ಪ್ರಕಾಶ್ ಗೆ ನಾನೂರ ಐವತ್ತು ರೂಪಾಯಿ ಸಾಲ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಪ್ರಕಾಶ್",
+      "amount": 450
+     }
+    ]
+   }
+  },
+  {
+   "id": "n05",
+   "tags": [
+    "numbers"
+   ],
+   "say": "ಅನಿತಾ ಎಪ್ಪತ್ತೈದು ರೂಪಾಯಿ ಕೊಟ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": "ಅನಿತಾ",
+      "amount": 75
+     }
+    ]
+   }
+  },
+  {
+   "id": "x01",
+   "tags": [
+    "mixed"
+   ],
+   "say": "Suresh ge 650 credit",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": [
+       "Suresh",
+       "ಸುರೇಶ್"
+      ],
+      "amount": 650
+     }
+    ]
+   }
+  },
+  {
+   "id": "x02",
+   "tags": [
+    "mixed"
+   ],
+   "say": "Ramesh ಇಂದ 200 payment ಬಂತು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": [
+       "Ramesh",
+       "ರಮೇಶ್"
+      ],
+      "amount": 200
+     }
+    ]
+   }
+  },
+  {
+   "id": "x03",
+   "tags": [
+    "mixed"
+   ],
+   "say": "ಗೀತಾ ge 450 ರೂಪಾಯಿ saala ಕೊಟ್ಟೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಗೀತಾ",
+      "amount": 450
+     }
+    ]
+   }
+  },
+  {
+   "id": "x04",
+   "tags": [
+    "mixed"
+   ],
+   "say": "Kumar 300 ಕೊಟ್ರು, phone pe ಮಾಡಿದ್ರು",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "payment",
+      "customer": [
+       "Kumar",
+       "ಕುಮಾರ್"
+      ],
+      "amount": 300
+     }
+    ]
+   }
+  },
+  {
+   "id": "x05",
+   "tags": [
+    "mixed",
+    "due"
+   ],
+   "say": "ಮಹೇಶ್ ಗೆ 120 credit, ನಾಳೆ ಕೊಡ್ತಾರೆ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "credit",
+      "customer": "ಮಹೇಶ್",
+      "amount": 120,
+      "due": "tomorrow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s01",
+   "tags": [
+    "sale"
+   ],
+   "say": "ಇವತ್ತು ಕ್ಯಾಶ್ ಸೇಲ್ 1500 ರೂಪಾಯಿ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "sale",
+      "customer": null,
+      "amount": 1500
+     }
+    ]
+   }
+  },
+  {
+   "id": "s02",
+   "tags": [
+    "sale"
+   ],
+   "say": "ನಗದು ಮಾರಾಟ 2300",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "sale",
+      "customer": null,
+      "amount": 2300
+     }
+    ]
+   }
+  },
+  {
+   "id": "s03",
+   "tags": [
+    "sale",
+    "numbers"
+   ],
+   "say": "ಇವತ್ತಿನ ಮಾರಾಟ ಒಂದು ಸಾವಿರದ ಎಂಟುನೂರು ರೂಪಾಯಿ",
+   "expect": {
+    "intent": "entries",
+    "entries": [
+     {
+      "kind": "sale",
+      "customer": null,
+      "amount": 1800
+     }
+    ]
+   }
+  },
+  {
+   "id": "b01",
+   "tags": [
+    "balance"
+   ],
+   "say": "ಸುರೇಶ್ ಎಷ್ಟು ಬಾಕಿ ಇದೆ",
+   "expect": {
+    "intent": "balance",
+    "customer": "ಸುರೇಶ್"
+   }
+  },
+  {
+   "id": "b02",
+   "tags": [
+    "balance"
+   ],
+   "say": "ರಮೇಶ್ ಬಾಕಿ ಎಷ್ಟು",
+   "expect": {
+    "intent": "balance",
+    "customer": "ರಮೇಶ್"
+   }
+  },
+  {
+   "id": "b03",
+   "tags": [
+    "balance"
+   ],
+   "say": "ಗೀತಾ ಅವರ ಬಾಕಿ ಎಷ್ಟು ಇದೆ",
+   "expect": {
+    "intent": "balance",
+    "customer": "ಗೀತಾ"
+   }
+  },
+  {
+   "id": "q01",
+   "tags": [
+    "dues"
+   ],
+   "say": "ಯಾರ್ಯಾರು ಎಷ್ಟೆಷ್ಟು ಬಾಕಿ ಕೊಡಬೇಕು",
+   "expect": {
+    "intent": "dues"
+   }
+  },
+  {
+   "id": "q02",
+   "tags": [
+    "dues"
+   ],
+   "say": "ಎಲ್ಲರ ಬಾಕಿ ಪಟ್ಟಿ ಹೇಳು",
+   "expect": {
+    "intent": "dues"
+   }
+  },
+  {
+   "id": "u01",
+   "tags": [
+    "undo"
+   ],
+   "say": "ಕೊನೇದು ತೆಗೆದುಬಿಡು",
+   "expect": {
+    "intent": "undo"
+   }
+  },
+  {
+   "id": "u02",
+   "tags": [
+    "undo"
+   ],
+   "say": "ಅದು ತಪ್ಪಾಗಿದೆ, ಕ್ಯಾನ್ಸಲ್ ಮಾಡು",
+   "expect": {
+    "intent": "undo"
+   }
+  },
+  {
+   "id": "f01",
+   "tags": [
+    "different"
+   ],
+   "say": "ಇದು ಬೇರೆ ಸುರೇಶ್",
+   "expect": {
+    "intent": "different_person",
+    "customer": "ಸುರೇಶ್"
+   }
+  },
+  {
+   "id": "f02",
+   "tags": [
+    "different"
+   ],
+   "say": "ಆ ಸುರೇಶ್ ಬೇರೆಯವರು",
+   "expect": {
+    "intent": "different_person",
+    "customer": "ಸುರೇಶ್"
+   }
+  },
+  {
+   "id": "z01",
+   "tags": [
+    "unclear"
+   ],
+   "say": "ನಾಳೆ ಮಳೆ ಬರಬಹುದು",
+   "expect": {
+    "intent": "unclear"
+   }
+  },
+  {
+   "id": "z02",
+   "tags": [
+    "unclear"
+   ],
+   "say": "ಅಂಗಡಿ ಬಾಗಿಲು ಹಾಕಿ ಬನ್ನಿ",
+   "expect": {
+    "intent": "unclear"
+   }
+  },
+  {
+   "id": "a01",
+   "tags": [
+    "ambiguous"
+   ],
+   "say": "ಸುರೇಶ್ 500",
+   "expect": {
+    "intent": "entries",
+    "must_flag": true,
+    "entries": [
+     {
+      "kind": "unknown",
+      "customer": "ಸುರೇಶ್",
+      "amount": 500
+     }
+    ]
+   }
+  },
+  {
+   "id": "a02",
+   "tags": [
+    "ambiguous"
+   ],
+   "say": "ರಮೇಶ್ ಎಂಟುನೂರು",
+   "expect": {
+    "intent": "entries",
+    "must_flag": true,
+    "entries": [
+     {
+      "kind": "unknown",
+      "customer": "ರಮೇಶ್",
+      "amount": 800
+     }
+    ]
+   }
+  }
+ ]
+}
