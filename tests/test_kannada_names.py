@@ -30,7 +30,7 @@ def test_kannada_name_is_one_customer(shop):
 def test_invisible_joiner_characters_are_ignored(shop):
     """Same word, but one copy has a zero-width joiner hidden inside."""
     plain = "ಸುರೇಶ್"
-    with_joiner = "ಸುರೇಶ್‍"
+    with_joiner = "ಸುರೇಶ್\u200d"
     assert plain != with_joiner  # different bytes...
     assert ledger.get_or_create_customer(shop, plain) == \
         ledger.get_or_create_customer(shop, with_joiner)  # ...same customer

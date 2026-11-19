@@ -48,7 +48,7 @@ def _shorten(text: str, limit: int) -> str:
     while cut > 0 and (
         unicodedata.category(text[cut]) in ("Mn", "Mc")   # next char is a sign for the one before
         or text[cut - 1] == "್"                      # last kept char is a dangling virama
-        or text[cut] in "‌‍"
+        or text[cut] in "\u200c\u200d"
     ):
         cut -= 1
     return text[:cut] + "…"

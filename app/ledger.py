@@ -1,19 +1,20 @@
 """
-ledger.py - the heart of DukaanDost.  ✍️  YOU write this file.
+ledger.py - the heart of GetLekka: the credit book itself.
 
-Every function below has:
-  - what it must do (the docstring)
-  - the steps, as comments
-  - `raise NotImplementedError` -> delete that line when you write the code
+It records credit, payments and cash sales, calculates balances, and undoes
+entries. Every other file asks this one to do anything with money.
 
 Golden rules:
   1. Only THIS file does money math. The AI never calculates balances.
   2. Amounts are whole rupees (int). Never float.
   3. Never delete rows. Undo only changes status to 'undone'.
   4. Balances are calculated from `entries` every time, never stored.
+  5. Every query is limited to one shop (shop_id), so shops never see each other's data.
 
-Run the tests after each function:   pytest -v
-Read WEEK2_LEDGER.md first.
+Sections: shops and customers, recording money, reading balances, undo,
+then helpers for reading customers and batches.
+
+Run the tests:   python -m pytest -q
 """
 import json
 import unicodedata
@@ -24,7 +25,7 @@ from app import db
 # Invisible characters that Kannada (and other Indic) text often carries.
 # They change how a word is stored but not how it looks, so we drop them
 # before comparing names. (ZWSP, ZWNJ, ZWJ, BOM)
-_INVISIBLE_CHARS = dict.fromkeys(map(ord, "​‌‍﻿"))
+_INVISIBLE_CHARS = dict.fromkeys(map(ord, "\u200b\u200c\u200d\ufeff"))
 
 
 # ---------------------------------------------------------------------------

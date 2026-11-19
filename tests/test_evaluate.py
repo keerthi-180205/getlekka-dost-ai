@@ -106,7 +106,7 @@ def test_a_650_heard_as_6500_is_a_small_speech_error_but_a_big_money_error():
 
 def test_names_match_ignores_case_spaces_and_hidden_characters():
     assert evaluate.names_match("Suresh", " SURESH ")
-    assert evaluate.names_match("ಸುರೇಶ್", "ಸುರೇಶ್‍")
+    assert evaluate.names_match("ಸುರೇಶ್", "ಸುರೇಶ್\u200d")
 
 
 def test_names_match_accepts_any_listed_spelling():

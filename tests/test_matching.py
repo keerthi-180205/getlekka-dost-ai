@@ -76,7 +76,7 @@ def test_exact_match_uses_the_stored_name(shop):
 
 def test_exact_match_in_kannada(shop):
     ledger.add_credit(shop, "ಸುರೇಶ್", 100)
-    assert matching.resolve_customer(shop, "ಸುರೇಶ್‍") == Resolution("exact", "ಸುರೇಶ್")
+    assert matching.resolve_customer(shop, "ಸುರೇಶ್\u200d") == Resolution("exact", "ಸುರೇಶ್")
 
 
 def test_nobody_close_means_a_new_customer(shop):
@@ -138,7 +138,7 @@ def test_other_shops_customers_are_invisible():
     assert matching.resolve_customer(shop_b, "Suresh").status == "new"
 
 
-@pytest.mark.parametrize("empty", ["", "   ", "‍"])
+@pytest.mark.parametrize("empty", ["", "   ", "\u200d"])
 def test_empty_name_is_refused(shop, empty):
     with pytest.raises(ValueError):
         matching.resolve_customer(shop, empty)

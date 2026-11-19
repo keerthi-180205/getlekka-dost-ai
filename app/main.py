@@ -27,7 +27,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="DukaanDost", lifespan=lifespan)
+app = FastAPI(title="GetLekka", lifespan=lifespan)
 
 
 # ---------- Door 1: Meta's one-time verification ----------

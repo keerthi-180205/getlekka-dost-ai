@@ -145,7 +145,7 @@ def _migrate(conn: sqlite3.Connection) -> None:
     conn.execute("CREATE INDEX IF NOT EXISTS idx_pending_shop ON pending_questions(shop_id, status)")
 
 
-# ---------- messages (Week 1) ----------
+# ---------- messages ----------
 
 def save_incoming(wa_msg_id: str, phone: str, msg_type: str, body: str | None) -> bool:
     """

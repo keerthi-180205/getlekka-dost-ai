@@ -49,7 +49,7 @@ def test_balance_matches_name_ignoring_case_and_spaces(shop):
 def test_balance_works_for_kannada_names(shop):
     ledger.add_credit(shop, "ಸುರೇಶ್", 700)
     assert ledger.get_balance(shop, "ಸುರೇಶ್") == 700
-    assert ledger.get_balance(shop, "ಸುರೇಶ್‍") == 700  # hidden joiner is ignored
+    assert ledger.get_balance(shop, "ಸುರೇಶ್\u200d") == 700  # hidden joiner is ignored
 
 
 def test_overpayment_gives_negative_balance(shop):
