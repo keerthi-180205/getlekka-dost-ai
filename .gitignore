@@ -33,6 +33,9 @@ eval/reports/
 .DS_Store
 Thumbs.db
 
+# ---- Old learning notes from the first weeks (kept locally, not published) ----
+WEEK*.md
+
 # ---- Backups made while experimenting ----
 *.bak
 *.orig

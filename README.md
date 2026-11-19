@@ -1,124 +1,89 @@
-# DukaanDost – Week 1: WhatsApp talks to your laptop
+# GetLekka
 
-**Goal for this week:** you send "hi" from your phone → your laptop receives it → your laptop replies → you see the reply on WhatsApp.
+**A voice-first credit book (udhaar / saala / baaki) for small shops, on WhatsApp. Kannada first.**
 
----
+A shop owner sends a **Kannada voice note** like *"ಸುರೇಶ್ ಗೆ 650 ಸಾಲ, ಶುಕ್ರವಾರ ಕೊಡ್ತಾರೆ"*.
+GetLekka writes it into the credit book, replies with a receipt showing the old and new
+balance, and keeps every change undoable. When it is not sure, it asks instead of guessing.
 
-## What each file does (read this first)
+> **Status: prototype in development.** The code is written and tested with stand-in
+> engines. It has **not** yet been run on real Kannada voice, has **no** users, and is
+> **not** live on WhatsApp. Accuracy on real speech is unknown until the accuracy test
+> in `eval/` is run.
 
-| File | Job | Who writes it |
-|---|---|---|
-| `app/config.py` | Reads your secret tokens from `.env` | AI (routine) |
-| `app/db.py` | Saves every message in `dukaandost.db`; skips duplicates | AI (routine) |
-| `app/whatsapp.py` | Sends a message through Meta's Send API | AI (routine) |
-| `app/main.py` | The server: `GET /webhook` (Meta's check) and `POST /webhook` (new messages) | AI (routine) |
-| `app/ledger.py` | Credit, payment, balance, undo | **YOU, in Week 2** |
+## What it does
 
-The flow:
+- Understands several entries in one voice note (credit, payment, cash sale).
+- Answers "how much does Suresh owe?", "who owes me?" and "undo".
+- Asks the owner when it is unsure (two customers with the same name, a big amount,
+  no credit/payment word) and saves nothing until answered.
+- Receipts with an **Undo** button; nothing is ever deleted, only marked undone.
+- Keeps the voice note, transcript and the AI's raw answer as proof.
+- Speech-to-text and the AI can run **locally** (faster-whisper, Ollama) or **hosted**,
+  behind one switch, so they can be compared on the same recordings.
+
+## How it works
 
 ```
-Your phone ──► Meta ──► ngrok ──► main.py (POST /webhook)
-                                     │
-                                     ├─ db.save_incoming()   (skip if duplicate)
-                                     ├─ decide the reply
-                                     └─ whatsapp.send_text() ──► Meta ──► Your phone
+voice note -> speech-to-text -> AI reads the words -> code checks every number
+          -> ledger (all money math) -> Kannada reply with buttons
 ```
 
----
+The AI only *reads* the words. Code validates every amount and date, and only
+`ledger.py` does money math. See [ARCHITECTURE.md](ARCHITECTURE.md) for the full
+flow, the golden rules, the file guide and what is still open.
 
-## Setup, step by step
+## Quick start
 
-### 1. Install Python packages
-Open a terminal inside the `dukaandost` folder:
-```
-python -m venv venv
-venv\Scripts\activate          (Windows)
-source venv/bin/activate       (Mac/Linux)
+Requires Python 3.12.
+
+```bash
 pip install -r requirements.txt
+python -m pytest -q
 ```
 
-### 2. Meta developer account
-1. Go to developers.facebook.com and log in.
-2. **My Apps → Create App** → choose **Business** type.
-3. In the app, add the **WhatsApp** product.
-4. Go to **WhatsApp → API Setup**. You will see:
-   - a **test phone number** (free)
-   - a **Temporary access token**
-   - the **Phone number ID**
-5. Under "To", **add your own phone number** and verify it with the OTP.
-   (The test number can only message up to 5 verified numbers.)
+Copy `.env.example` to `.env` and fill in only what you need. **Never commit `.env`.**
 
-### 3. Create your .env file
-Copy `.env.example` to a new file named `.env` and paste in your token and Phone number ID.
-Invent any secret word for `VERIFY_TOKEN`.
+Chat with it from the terminal (practice mode, no WhatsApp needed), in two terminals:
 
-### 4. Start your server
+```bash
+SIMULATE=true uvicorn app.main:app --port 8000
 ```
-uvicorn app.main:app --reload --port 8000
+```bash
+python simulate.py
 ```
-You should see `Uvicorn running on http://127.0.0.1:8000`.
 
-### 5. Make it reachable with ngrok
-1. Sign up free at ngrok.com, install it, and add your authtoken (their site shows the command).
-2. In a **second** terminal:
+Useful tools:
+
+```bash
+python -m app.extraction "ಸುರೇಶ್ ಗೆ 650 ಸಾಲ" --engine hosted   # try the AI on one sentence
+python -m app.speech note.ogg                                  # try speech on one recording
+python -m app.evaluate --stage text --engine hosted            # accuracy on the 54-sentence test set
+python -m app.usage                                            # how a shop is using it
 ```
-ngrok http 8000
-```
-3. Copy the `https://....ngrok-free.app` address it shows.
 
-### 6. Connect Meta to your server
-1. Meta dashboard → **WhatsApp → Configuration → Webhook → Edit**.
-2. Callback URL: `https://YOUR-NGROK-ADDRESS/webhook`
-3. Verify token: the same word as `VERIFY_TOKEN` in your `.env`.
-4. Click **Verify and save**. Your server terminal should print `[webhook] verified by Meta`.
-5. Under **Webhook fields**, **Subscribe** to `messages`.
+Local engines need `faster-whisper` and [Ollama](https://ollama.com) with a model;
+hosted engines need `GEMINI_API_KEY` in `.env`.
 
-### 7. Test it 🎉
-Send **"hi"** from your phone to the test number.
-Your terminal prints `[in] ...` and `[out] ...`, and you get a reply on WhatsApp.
+## Project layout
 
----
-
-## Practice mode: chat without WhatsApp (use this while Meta has the account locked)
-
-1. In `.env`, set `SIMULATE=true` (tokens can stay empty).
-2. Terminal 1 – start the server:
-   ```
-   uvicorn app.main:app --reload --port 8000
-   ```
-3. Terminal 2 – start the simulator (same folder):
-   ```
-   python simulate.py
-   ```
-4. Type messages like `hi` or `Suresh 650 credit`. The simulator sends them to your
-   server in exactly the same format Meta uses, and prints the server's reply.
-
-When Meta unlocks your account: set `SIMULATE=false`, fill in the tokens, and the
-same code talks to real WhatsApp. Nothing else changes.
-
----
-
-## Common problems
-
-| Problem | Fix |
+| Path | What it is |
 |---|---|
-| `Missing in .env file` | `.env` not created, or a value is empty |
-| Verify fails in Meta | ngrok not running, wrong URL (must end with `/webhook`), or verify word doesn't match |
-| Message arrives but no reply, terminal shows `FAILED 401` | Token expired (temporary token lasts ~24 h) – copy a new one into `.env` |
-| `FAILED 400` with "recipient not in allowed list" | Add your number as a test recipient in API Setup |
-| Nothing arrives at all | Didn't subscribe to `messages` in Webhook fields |
-| ngrok address changed | Free ngrok gives a new address each restart – update it in Meta's webhook settings |
+| `app/ledger.py`, `app/db.py` | The credit book and the database |
+| `app/speech.py`, `app/extraction.py`, `app/prompts.py` | Voice to text, text to checked entries |
+| `app/matching.py`, `app/questions.py`, `app/pipeline.py` | Which customer, asking questions, the decisions |
+| `app/replies.py` | Everything the bot says, in Kannada |
+| `app/main.py`, `app/whatsapp.py`, `app/audio_store.py` | The WhatsApp side |
+| `app/evaluate.py`, `app/usage.py`, `eval/` | Accuracy report, usage numbers, test sentences |
+| `tests/` | The tests; each file matches a module |
+| `simulate.py` | Practice chat |
 
----
+## Not done yet
 
-## Check your understanding (answer without looking)
+Kannada voice replies, the 9 PM summary, reminder messages, shop onboarding, webhook
+signature checks, and testing against a real WhatsApp Business account.
 
-1. Why do we reply "200 OK" to Meta immediately and do the work in the background?
-2. What is the `VERIFY_TOKEN` for, and who else knows it?
-3. Why do we save the `wa_msg_id` of every incoming message?
-4. Where does the access token go in the request to Meta?
-5. Why is `.env` never uploaded to GitHub?
-6. What does ngrok do, and why won't we need it after deploying to the cloud?
+## Privacy
 
-Send me your answers – I'll check them before we start Week 2.
-# getlekka-dost-ai
+Voice notes and databases contain customers' names and money amounts. They are
+excluded by `.gitignore` and must never be committed.
